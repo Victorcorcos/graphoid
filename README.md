@@ -8,8 +8,8 @@
 
 Generates a full GraphQL API using introspection of Mongoid or ActiveRecord models.
 
-## API Dodocumentation
-The [API Documentation](https://maxiperezc.github.io/graphoid/) that displays how to use the queries and mutations that Graphoid automatically generates.
+## API Documentation
+The [API Documentation](https://maxcoto.github.io/graphoid/) that displays how to use the queries and mutations that Graphoid automatically generates.
 
 
 ## Dependency
