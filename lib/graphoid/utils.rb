@@ -64,6 +64,18 @@ module Graphoid
         Rails.logger.error("GRAPHOID rescue { #{type}: '#{error.backtrace&.join("\n")}' }")
         Rails.logger.error("GRAPHOID rescue { #{type}: '#{error.message}' }")
       end
+
+      def treat_known_error_messages(error_message, name)
+        known_error_codes = {
+          'E11000' => 'mutations.create.errors.duplicate_key'
+        }
+
+        known_error_codes.each do |code, i18_key|
+          return I18n.t(i18_key, model_name: name) if error_message.include?(code)
+        end
+
+        error_message
+      end
     end
   end
 end

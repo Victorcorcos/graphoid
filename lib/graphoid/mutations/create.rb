@@ -23,7 +23,8 @@ module Graphoid
               Graphoid::Mutations::Processor.execute(model, grapho, data, user)
             rescue Exception => ex
               Utils.log_error(name, ex)
-              GraphQL::ExecutionError.new(ex.message)
+              treated_message = Utils.treat_known_error_messages(ex.message, grapho.name)
+              GraphQL::ExecutionError.new(treated_message)
             end
           end
         end
